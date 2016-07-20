@@ -35,11 +35,8 @@
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelVistaPrevia = new System.Windows.Forms.DataGridView();
             this.BarraHerramientas = new System.Windows.Forms.ToolStrip();
-            this.bBuscar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bSalir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bRun = new System.Windows.Forms.ToolStripButton();
             this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.srtOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buscaSrt = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -47,9 +44,17 @@
             this.videoOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buscarVideo = new System.Windows.Forms.DataGridViewButtonColumn();
             this.videoDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelOpciones = new System.Windows.Forms.Panel();
+            this.bCancelar = new System.Windows.Forms.Button();
+            this.bGuardar = new System.Windows.Forms.Button();
+            this.bSettings = new System.Windows.Forms.ToolStripButton();
+            this.bBuscar = new System.Windows.Forms.ToolStripButton();
+            this.bRun = new System.Windows.Forms.ToolStripButton();
+            this.bSalir = new System.Windows.Forms.ToolStripButton();
             this.menuTop1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelVistaPrevia)).BeginInit();
             this.BarraHerramientas.SuspendLayout();
+            this.panelOpciones.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuTop1
@@ -59,6 +64,7 @@
             this.acercaDeToolStripMenuItem});
             this.menuTop1.Location = new System.Drawing.Point(0, 0);
             this.menuTop1.Name = "menuTop1";
+            this.menuTop1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuTop1.Size = new System.Drawing.Size(1528, 24);
             this.menuTop1.TabIndex = 0;
             this.menuTop1.Text = "menuStrip1";
@@ -74,8 +80,9 @@
             // opcionesToolStripMenuItem
             // 
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
-            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.opcionesToolStripMenuItem.Text = "Opciones";
+            this.opcionesToolStripMenuItem.Click += new System.EventHandler(this.opcionesToolStripMenuItem_Click);
             // 
             // acercaDeToolStripMenuItem
             // 
@@ -105,62 +112,36 @@
             // BarraHerramientas
             // 
             this.BarraHerramientas.AllowMerge = false;
+            this.BarraHerramientas.BackColor = System.Drawing.Color.Transparent;
+            this.BarraHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
             this.BarraHerramientas.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.BarraHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.BarraHerramientas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bBuscar,
+            this.bSettings,
             this.toolStripSeparator1,
+            this.bBuscar,
             this.bRun,
             this.toolStripSeparator2,
             this.bSalir});
             this.BarraHerramientas.Location = new System.Drawing.Point(0, 24);
             this.BarraHerramientas.Name = "BarraHerramientas";
+            this.BarraHerramientas.Padding = new System.Windows.Forms.Padding(0);
+            this.BarraHerramientas.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.BarraHerramientas.Size = new System.Drawing.Size(1528, 39);
             this.BarraHerramientas.TabIndex = 3;
             this.BarraHerramientas.Text = "Barra De Herramientas";
             // 
-            // bBuscar
-            // 
-            this.bBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bBuscar.Image = ((System.Drawing.Image)(resources.GetObject("bBuscar.Image")));
-            this.bBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.bBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(36, 36);
-            this.bBuscar.Text = "toolStripButton1";
-            this.bBuscar.ToolTipText = "Buscar";
-            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
-            // 
             // toolStripSeparator1
             // 
+            this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
-            // bSalir
-            // 
-            this.bSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bSalir.Image = ((System.Drawing.Image)(resources.GetObject("bSalir.Image")));
-            this.bSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bSalir.Name = "bSalir";
-            this.bSalir.Size = new System.Drawing.Size(36, 36);
-            this.bSalir.Text = "toolStripButton1";
-            this.bSalir.ToolTipText = "Salir";
-            // 
             // toolStripSeparator2
             // 
+            this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
-            // 
-            // bRun
-            // 
-            this.bRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bRun.Image = ((System.Drawing.Image)(resources.GetObject("bRun.Image")));
-            this.bRun.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.bRun.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bRun.Name = "bRun";
-            this.bRun.Size = new System.Drawing.Size(36, 36);
-            this.bRun.Text = "Convertir";
-            this.bRun.Click += new System.EventHandler(this.bRun_Click);
             // 
             // Seleccion
             // 
@@ -228,6 +209,91 @@
             this.videoDestino.Name = "videoDestino";
             this.videoDestino.ReadOnly = true;
             // 
+            // panelOpciones
+            // 
+            this.panelOpciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelOpciones.Controls.Add(this.bGuardar);
+            this.panelOpciones.Controls.Add(this.bCancelar);
+            this.panelOpciones.Location = new System.Drawing.Point(0, 24);
+            this.panelOpciones.Margin = new System.Windows.Forms.Padding(10);
+            this.panelOpciones.Name = "panelOpciones";
+            this.panelOpciones.Size = new System.Drawing.Size(1528, 501);
+            this.panelOpciones.TabIndex = 4;
+            this.panelOpciones.Visible = false;
+            // 
+            // bCancelar
+            // 
+            this.bCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bCancelar.Location = new System.Drawing.Point(1442, 465);
+            this.bCancelar.Name = "bCancelar";
+            this.bCancelar.Size = new System.Drawing.Size(74, 23);
+            this.bCancelar.TabIndex = 0;
+            this.bCancelar.Text = "Cancelar";
+            this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
+            // 
+            // bGuardar
+            // 
+            this.bGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bGuardar.Location = new System.Drawing.Point(1361, 465);
+            this.bGuardar.Name = "bGuardar";
+            this.bGuardar.Size = new System.Drawing.Size(75, 23);
+            this.bGuardar.TabIndex = 1;
+            this.bGuardar.Text = "Guardar";
+            this.bGuardar.UseVisualStyleBackColor = true;
+            // 
+            // bSettings
+            // 
+            this.bSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bSettings.Image = global::RenombraTusCapis.Properties.Resources.settings;
+            this.bSettings.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.bSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bSettings.Name = "bSettings";
+            this.bSettings.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.bSettings.Size = new System.Drawing.Size(46, 36);
+            this.bSettings.Text = "Configuracion";
+            // 
+            // bBuscar
+            // 
+            this.bBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bBuscar.Image = ((System.Drawing.Image)(resources.GetObject("bBuscar.Image")));
+            this.bBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.bBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bBuscar.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(36, 39);
+            this.bBuscar.Text = "toolStripButton1";
+            this.bBuscar.ToolTipText = "Buscar";
+            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
+            // 
+            // bRun
+            // 
+            this.bRun.AutoSize = false;
+            this.bRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bRun.Image = ((System.Drawing.Image)(resources.GetObject("bRun.Image")));
+            this.bRun.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bRun.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.bRun.Name = "bRun";
+            this.bRun.Size = new System.Drawing.Size(36, 39);
+            this.bRun.Text = "Convertir";
+            this.bRun.Click += new System.EventHandler(this.bRun_Click);
+            // 
+            // bSalir
+            // 
+            this.bSalir.AutoSize = false;
+            this.bSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bSalir.Image = global::RenombraTusCapis.Properties.Resources.exit;
+            this.bSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bSalir.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.bSalir.Name = "bSalir";
+            this.bSalir.Size = new System.Drawing.Size(32, 30);
+            this.bSalir.Text = "Salir";
+            this.bSalir.ToolTipText = "Salir";
+            this.bSalir.Click += new System.EventHandler(this.bSalir_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,6 +302,7 @@
             this.Controls.Add(this.BarraHerramientas);
             this.Controls.Add(this.panelVistaPrevia);
             this.Controls.Add(this.menuTop1);
+            this.Controls.Add(this.panelOpciones);
             this.MainMenuStrip = this.menuTop1;
             this.Name = "Principal";
             this.Text = "Renombra Tus Capis";
@@ -245,6 +312,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelVistaPrevia)).EndInit();
             this.BarraHerramientas.ResumeLayout(false);
             this.BarraHerramientas.PerformLayout();
+            this.panelOpciones.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,6 +338,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn videoOriginal;
         private System.Windows.Forms.DataGridViewButtonColumn buscarVideo;
         private System.Windows.Forms.DataGridViewTextBoxColumn videoDestino;
+        private System.Windows.Forms.Panel panelOpciones;
+        private System.Windows.Forms.Button bGuardar;
+        private System.Windows.Forms.Button bCancelar;
+        private System.Windows.Forms.ToolStripButton bSettings;
     }
 }
 
