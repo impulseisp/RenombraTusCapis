@@ -49,13 +49,13 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bSalir = new System.Windows.Forms.ToolStripButton();
             this.panelOpciones = new System.Windows.Forms.Panel();
+            this.bBuscarCarpetaSeries = new System.Windows.Forms.Button();
+            this.labelPath = new System.Windows.Forms.Label();
+            this.labelOpciones = new System.Windows.Forms.Label();
+            this.textoPathSeries = new System.Windows.Forms.TextBox();
             this.bGuardar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.dialogoBuscarCarpetaSeries = new System.Windows.Forms.FolderBrowserDialog();
-            this.labelOpciones = new System.Windows.Forms.Label();
-            this.textoPathSeries = new System.Windows.Forms.TextBox();
-            this.labelPath = new System.Windows.Forms.Label();
-            this.bBuscarCarpetaSeries = new System.Windows.Forms.Button();
             this.menuTop1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelVistaPrevia)).BeginInit();
             this.BarraHerramientas.SuspendLayout();
@@ -285,6 +285,42 @@
             this.panelOpciones.TabIndex = 4;
             this.panelOpciones.Visible = false;
             // 
+            // bBuscarCarpetaSeries
+            // 
+            this.bBuscarCarpetaSeries.Location = new System.Drawing.Point(405, 37);
+            this.bBuscarCarpetaSeries.Name = "bBuscarCarpetaSeries";
+            this.bBuscarCarpetaSeries.Size = new System.Drawing.Size(75, 23);
+            this.bBuscarCarpetaSeries.TabIndex = 8;
+            this.bBuscarCarpetaSeries.Text = "Buscar...";
+            this.bBuscarCarpetaSeries.UseVisualStyleBackColor = true;
+            this.bBuscarCarpetaSeries.Click += new System.EventHandler(this.bBuscarCarpetaSeries_Click);
+            // 
+            // labelPath
+            // 
+            this.labelPath.AutoSize = true;
+            this.labelPath.Location = new System.Drawing.Point(37, 42);
+            this.labelPath.Name = "labelPath";
+            this.labelPath.Size = new System.Drawing.Size(137, 13);
+            this.labelPath.TabIndex = 7;
+            this.labelPath.Text = "Ruta a la carpeta de series:";
+            // 
+            // labelOpciones
+            // 
+            this.labelOpciones.AutoSize = true;
+            this.labelOpciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOpciones.Location = new System.Drawing.Point(12, 14);
+            this.labelOpciones.Name = "labelOpciones";
+            this.labelOpciones.Size = new System.Drawing.Size(60, 13);
+            this.labelOpciones.TabIndex = 5;
+            this.labelOpciones.Text = "Opciones";
+            // 
+            // textoPathSeries
+            // 
+            this.textoPathSeries.Location = new System.Drawing.Point(180, 39);
+            this.textoPathSeries.Name = "textoPathSeries";
+            this.textoPathSeries.Size = new System.Drawing.Size(219, 20);
+            this.textoPathSeries.TabIndex = 6;
+            // 
             // bGuardar
             // 
             this.bGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -312,51 +348,15 @@
             this.dialogoBuscarCarpetaSeries.Description = "Carpeta Series";
             this.dialogoBuscarCarpetaSeries.HelpRequest += new System.EventHandler(this.dialogoBuscarCarpetaSeries_HelpRequest);
             // 
-            // labelOpciones
-            // 
-            this.labelOpciones.AutoSize = true;
-            this.labelOpciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOpciones.Location = new System.Drawing.Point(12, 14);
-            this.labelOpciones.Name = "labelOpciones";
-            this.labelOpciones.Size = new System.Drawing.Size(60, 13);
-            this.labelOpciones.TabIndex = 5;
-            this.labelOpciones.Text = "Opciones";
-            // 
-            // textoPathSeries
-            // 
-            this.textoPathSeries.Location = new System.Drawing.Point(180, 39);
-            this.textoPathSeries.Name = "textoPathSeries";
-            this.textoPathSeries.Size = new System.Drawing.Size(219, 20);
-            this.textoPathSeries.TabIndex = 6;
-            // 
-            // labelPath
-            // 
-            this.labelPath.AutoSize = true;
-            this.labelPath.Location = new System.Drawing.Point(37, 42);
-            this.labelPath.Name = "labelPath";
-            this.labelPath.Size = new System.Drawing.Size(137, 13);
-            this.labelPath.TabIndex = 7;
-            this.labelPath.Text = "Ruta a la carpeta de series:";
-            // 
-            // bBuscarCarpetaSeries
-            // 
-            this.bBuscarCarpetaSeries.Location = new System.Drawing.Point(405, 37);
-            this.bBuscarCarpetaSeries.Name = "bBuscarCarpetaSeries";
-            this.bBuscarCarpetaSeries.Size = new System.Drawing.Size(75, 23);
-            this.bBuscarCarpetaSeries.TabIndex = 8;
-            this.bBuscarCarpetaSeries.Text = "Buscar...";
-            this.bBuscarCarpetaSeries.UseVisualStyleBackColor = true;
-            this.bBuscarCarpetaSeries.Click += new System.EventHandler(this.bBuscarCarpetaSeries_Click);
-            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1141, 524);
+            this.Controls.Add(this.panelOpciones);
             this.Controls.Add(this.BarraHerramientas);
             this.Controls.Add(this.panelVistaPrevia);
             this.Controls.Add(this.menuTop1);
-            this.Controls.Add(this.panelOpciones);
             this.MainMenuStrip = this.menuTop1;
             this.Name = "Principal";
             this.Text = "Renombra Tus Capis";

@@ -55,64 +55,85 @@ namespace RenombraTusCapis
             //string startFolder = "@" + textoPathSeries.Text;
 
             // Take a snapshot of the file system.
-            DirectoryInfo dir = new DirectoryInfo(textoPathSeries.Text);
-
-            // This method assumes that the application has discovery permissions
-            // for all folders under the specified path.
-            IEnumerable<FileInfo> fileList = dir.GetFiles("*(*).*", SearchOption.AllDirectories);
-
-            //Create the query
-            IEnumerable<FileInfo> fileQuery =
-                from file in fileList
-                where file.Extension == ".srt"
-                orderby file.Name
-                select file;
-
-            //filas tabla
-            int pos = 0;
-            string[] srtOriginalesFullName = new string[fileList.Count()];
-            FileInfo archivoMKV;
-
-
-            //Execute the query. This might write out a lot of files!
-            foreach (FileInfo fi in fileQuery)
+            if (textoPathSeries.Text == "")
             {
-                //Console.WriteLine(fi.FullName);
-
-
-                srtOriginalesFullName[pos] = fi.FullName;
-
-                archivoMKV = buscaMKV(fi.Name, dir);
-
-
-                panelVistaPrevia.Rows.Add();
-                panelVistaPrevia.Rows[pos].Cells[1].Value = fi.Name;
-
-                panelVistaPrevia.Rows[pos].Cells[3].Value = fi.Name.Substring(0,fi.Name.IndexOf("(")-1)+fi.Extension;
-
-
-                pos++;
+                //crear label
+                panelOpciones.Visible = true;
             }
+            else
+            {
+
+
+                DirectoryInfo dir = new DirectoryInfo(textoPathSeries.Text);
+
+                // This method assumes that the application has discovery permissions
+                // for all folders under the specified path.
+                IEnumerable<FileInfo> fileList = dir.GetFiles("*(*(*)*).*", SearchOption.AllDirectories);
+
+                //Create the query
+                IEnumerable<FileInfo> fileQuery =
+                    from file in fileList
+                    where file.Extension == ".srt"
+                    orderby file.Name
+                    select file;
+
+                //filas tabla
+                int pos = 0;
+                string[] srtOriginalesFullName = new string[fileList.Count()];
+                FileInfo archivoMKV;
+
+
+                //Execute the query. This might write out a lot of files!
+                foreach (FileInfo fi in fileQuery)
+                {
+                    //Console.WriteLine(fi.FullName);
+
+
+                    srtOriginalesFullName[pos] = fi.FullName;
+
+                    archivoMKV = buscaMKV(fi.Name, dir);
+
+
+                    panelVistaPrevia.Rows.Add();
+                    panelVistaPrevia.Rows[pos].Cells[1].Value = fi.Name;
+
+                    panelVistaPrevia.Rows[pos].Cells[3].Value = fi.Name.Substring(0, fi.Name.IndexOf("(") - 1) + fi.Extension;
+
+                    if (archivoMKV != null)
+                    {
+                        panelVistaPrevia.Rows[pos].Cells[4].Value = archivoMKV.Name;
+                        panelVistaPrevia.Rows[pos].Cells[6].Value = renombraMKV(archivoMKV.Name, fi.Name.Substring(0, fi.Name.IndexOf("(") - 1));
+                        panelVistaPrevia.Rows[pos].Cells[6].Value = true;
+                    }
+                    else
+                        panelVistaPrevia.Rows[pos].Cells[4].Value = "No se ha encontrado el video correspondiente";
+                    pos++;
+                }
 
 
 
-            // Create and execute a new query by using the previous 
-            // query as a starting point. fileQuery is not 
-            // executed again until the call to Last()
+                // Create and execute a new query by using the previous 
+                // query as a starting point. fileQuery is not 
+                // executed again until the call to Last()
 
-            /* var newestFile =
-                (from file in fileQuery
-                 orderby file.CreationTime
-                 select new { file.FullName, file.CreationTime })
-                .Last();
+                /* var newestFile =
+                    (from file in fileQuery
+                     orderby file.CreationTime
+                     select new { file.FullName, file.CreationTime })
+                    .Last();
 
-            Console.WriteLine("\r\nThe newest .txt file is {0}. Creation time: {1}",
-                newestFile.FullName, newestFile.CreationTime);*/
+                Console.WriteLine("\r\nThe newest .txt file is {0}. Creation time: {1}",
+                    newestFile.FullName, newestFile.CreationTime);*/
 
-            // Keep the console window open in debug mode.
-            /* Console.WriteLine("Press any key to exit");
-            Console.ReadKey(); */
+                // Keep the console window open in debug mode.
+                /* Console.WriteLine("Press any key to exit");
+                Console.ReadKey(); */
+            }
+        }
 
+        private object renombraMKV(string name1, string name2)
+        {
+            return name2 + ".mkv";
         }
 
         private FileInfo buscaMKV(string name, DirectoryInfo dir)
@@ -139,7 +160,7 @@ namespace RenombraTusCapis
                     else
                         numeroTemporada = numeroTemporada + palabras[numPalabra-1].Substring(0, palabras[numPalabra-1].IndexOf("x") - 1);
 
-                    numeroEpisodio = numeroEpisodio + palabras[numPalabra - 1].Substring(palabras[numPalabra - 1].IndexOf("x"),palabras[numPalabra - 1].Length - palabras[numPalabra - 1].IndexOf("x"));
+                    numeroEpisodio = numeroEpisodio + palabras[numPalabra - 1].Substring(palabras[numPalabra - 1].IndexOf("x")+1,palabras[numPalabra - 1].Length - palabras[numPalabra - 1].IndexOf("x")-1);
 
                     continua = false;
 
@@ -154,17 +175,17 @@ namespace RenombraTusCapis
             string cadBusqueda = "*";
             int i = 0;
 
-            while (i < numPalabra)
+            while (i < numPalabra-3)
             { 
                 cadBusqueda = cadBusqueda + palabras[i] + "*";
                 i++;
             }
             cadBusqueda = cadBusqueda + "*" + numeroTemporada + numeroEpisodio + "*.*";
-            cadBusqueda = cadBusqueda + "*.*";
+            //cadBusqueda = cadBusqueda + "*.*";
 
             IEnumerable<FileInfo> fileList = dir.GetFiles(cadBusqueda, SearchOption.AllDirectories);
 
-            return fileList.First();
+            return fileList.FirstOrDefault();
 
         }
 
