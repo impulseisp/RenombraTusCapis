@@ -26,20 +26,28 @@ namespace RenombraTusCapis
 
         private void leerConfig()
         {
+            if (!File.Exists("Config.xml"))
+            {
+                XmlWriter w = XmlWriter.Create("Config.xml");
+                w.WriteStartElement("General_Config");
+                w.WriteElementString("CarpetaSeries", "");
+                w.WriteElementString("CarpetaTemporada", "");
+                w.WriteEndElement();
+                w.Close();
+            }
             try
             { 
                 XmlReader r = XmlReader.Create("Config.xml");
                 r.ReadStartElement("General_Config");
                 textoPathSeries.Text = r.ReadElementContentAsString();
+                textoCarpetaTemporada.Text = r.ReadElementContentAsString();
                 r.Close();
+                cambiaLabelTemporada();
+                
             }
-            catch
+            catch (Exception e)
             {
-                XmlWriter w = XmlWriter.Create("Config.xml");
-                w.WriteStartElement("General_Config");
-                w.WriteElementString("CarpetaSeries", "");
-                w.WriteEndElement();
-                w.Close();
+                Console.WriteLine(e.ToString());
             }
         }
 
@@ -62,6 +70,10 @@ namespace RenombraTusCapis
             }
             else
             {
+                //antes eliminar todo de la vista previa
+                if (panelVistaPrevia.Rows.Count > 0)
+                    panelVistaPrevia.Rows.Clear();
+
 
 
                 DirectoryInfo dir = new DirectoryInfo(textoPathSeries.Text);
@@ -103,7 +115,15 @@ namespace RenombraTusCapis
                     {
                         panelVistaPrevia.Rows[pos].Cells[4].Value = archivoMKV.Name;
                         panelVistaPrevia.Rows[pos].Cells[6].Value = renombraMKV(archivoMKV.Name, fi.Name.Substring(0, fi.Name.IndexOf("(") - 1));
-                        panelVistaPrevia.Rows[pos].Cells[6].Value = true;
+
+                        panelVistaPrevia.Rows[pos].Cells[4].Selected = true;
+                        panelVistaPrevia.Rows[pos].Cells[6].Selected = true;
+                        panelVistaPrevia.Rows[pos].Cells[1].Selected = true;
+                        panelVistaPrevia.Rows[pos].Cells[3].Selected = true;
+
+                        ((DataGridViewCheckBoxCell)panelVistaPrevia.Rows[pos].Cells[0]).Value = true;
+                        panelVistaPrevia.RefreshEdit();
+
                     }
                     else
                         panelVistaPrevia.Rows[pos].Cells[4].Value = "No se ha encontrado el video correspondiente";
@@ -221,6 +241,7 @@ namespace RenombraTusCapis
             XmlWriter w = XmlWriter.Create("Config.xml");
             w.WriteStartElement("General_Config");
             w.WriteElementString("CarpetaSeries", textoPathSeries.Text);
+            w.WriteElementString("CarpetaTemporada", textoCarpetaTemporada.Text);
             w.WriteEndElement();
             w.Close();
             panelOpciones.Visible = false;
@@ -237,6 +258,23 @@ namespace RenombraTusCapis
         private void bSettings_Click(object sender, EventArgs e)
         {
             panelOpciones.Visible = true;
+        }
+
+        private void textoCarpetaTemporada_TextChanged(object sender, EventArgs e)
+        {
+            cambiaLabelTemporada();
+        }
+
+        private void cambiaLabelTemporada()
+        {
+            if (textoCarpetaTemporada.Text == "")
+            {
+                labelSubcarpetaTemporadaResultado.Text = "Los videos se guardarán en la misma carpeta que los subtitulos";
+            }
+            else
+            {
+                labelSubcarpetaTemporadaResultado.Text = "Los videos se guardarán en [NombreDeSerie]\\" + textoCarpetaTemporada.Text + " [NumeroDeTemporada]";
+            }
         }
     }
 }
