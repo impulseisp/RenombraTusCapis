@@ -34,9 +34,6 @@
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelVistaPrevia = new System.Windows.Forms.DataGridView();
-            this.BarraHerramientas = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.srtOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buscaSrt = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -44,13 +41,21 @@
             this.videoOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buscarVideo = new System.Windows.Forms.DataGridViewButtonColumn();
             this.videoDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelOpciones = new System.Windows.Forms.Panel();
-            this.bCancelar = new System.Windows.Forms.Button();
-            this.bGuardar = new System.Windows.Forms.Button();
+            this.BarraHerramientas = new System.Windows.Forms.ToolStrip();
             this.bSettings = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bBuscar = new System.Windows.Forms.ToolStripButton();
             this.bRun = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bSalir = new System.Windows.Forms.ToolStripButton();
+            this.panelOpciones = new System.Windows.Forms.Panel();
+            this.bGuardar = new System.Windows.Forms.Button();
+            this.bCancelar = new System.Windows.Forms.Button();
+            this.dialogoBuscarCarpetaSeries = new System.Windows.Forms.FolderBrowserDialog();
+            this.labelOpciones = new System.Windows.Forms.Label();
+            this.textoPathSeries = new System.Windows.Forms.TextBox();
+            this.labelPath = new System.Windows.Forms.Label();
+            this.bBuscarCarpetaSeries = new System.Windows.Forms.Button();
             this.menuTop1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelVistaPrevia)).BeginInit();
             this.BarraHerramientas.SuspendLayout();
@@ -65,7 +70,7 @@
             this.menuTop1.Location = new System.Drawing.Point(0, 0);
             this.menuTop1.Name = "menuTop1";
             this.menuTop1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuTop1.Size = new System.Drawing.Size(1528, 24);
+            this.menuTop1.Size = new System.Drawing.Size(1141, 24);
             this.menuTop1.TabIndex = 0;
             this.menuTop1.Text = "menuStrip1";
             // 
@@ -80,7 +85,7 @@
             // opcionesToolStripMenuItem
             // 
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
-            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             this.opcionesToolStripMenuItem.Click += new System.EventHandler(this.opcionesToolStripMenuItem_Click);
             // 
@@ -92,7 +97,9 @@
             // 
             // panelVistaPrevia
             // 
-            this.panelVistaPrevia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panelVistaPrevia.AllowUserToAddRows = false;
+            this.panelVistaPrevia.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelVistaPrevia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.panelVistaPrevia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -103,45 +110,11 @@
             this.videoOriginal,
             this.buscarVideo,
             this.videoDestino});
-            this.panelVistaPrevia.Location = new System.Drawing.Point(0, 66);
+            this.panelVistaPrevia.Location = new System.Drawing.Point(0, 63);
             this.panelVistaPrevia.Name = "panelVistaPrevia";
-            this.panelVistaPrevia.Size = new System.Drawing.Size(1528, 420);
+            this.panelVistaPrevia.Size = new System.Drawing.Size(1141, 462);
             this.panelVistaPrevia.TabIndex = 2;
             this.panelVistaPrevia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // BarraHerramientas
-            // 
-            this.BarraHerramientas.AllowMerge = false;
-            this.BarraHerramientas.BackColor = System.Drawing.Color.Transparent;
-            this.BarraHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
-            this.BarraHerramientas.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.BarraHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.BarraHerramientas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bSettings,
-            this.toolStripSeparator1,
-            this.bBuscar,
-            this.bRun,
-            this.toolStripSeparator2,
-            this.bSalir});
-            this.BarraHerramientas.Location = new System.Drawing.Point(0, 24);
-            this.BarraHerramientas.Name = "BarraHerramientas";
-            this.BarraHerramientas.Padding = new System.Windows.Forms.Padding(0);
-            this.BarraHerramientas.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.BarraHerramientas.Size = new System.Drawing.Size(1528, 39);
-            this.BarraHerramientas.TabIndex = 3;
-            this.BarraHerramientas.Text = "Barra De Herramientas";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
             // 
             // Seleccion
             // 
@@ -209,40 +182,27 @@
             this.videoDestino.Name = "videoDestino";
             this.videoDestino.ReadOnly = true;
             // 
-            // panelOpciones
+            // BarraHerramientas
             // 
-            this.panelOpciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelOpciones.Controls.Add(this.bGuardar);
-            this.panelOpciones.Controls.Add(this.bCancelar);
-            this.panelOpciones.Location = new System.Drawing.Point(0, 24);
-            this.panelOpciones.Margin = new System.Windows.Forms.Padding(10);
-            this.panelOpciones.Name = "panelOpciones";
-            this.panelOpciones.Size = new System.Drawing.Size(1528, 501);
-            this.panelOpciones.TabIndex = 4;
-            this.panelOpciones.Visible = false;
-            // 
-            // bCancelar
-            // 
-            this.bCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bCancelar.Location = new System.Drawing.Point(1442, 465);
-            this.bCancelar.Name = "bCancelar";
-            this.bCancelar.Size = new System.Drawing.Size(74, 23);
-            this.bCancelar.TabIndex = 0;
-            this.bCancelar.Text = "Cancelar";
-            this.bCancelar.UseVisualStyleBackColor = true;
-            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
-            // 
-            // bGuardar
-            // 
-            this.bGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bGuardar.Location = new System.Drawing.Point(1361, 465);
-            this.bGuardar.Name = "bGuardar";
-            this.bGuardar.Size = new System.Drawing.Size(75, 23);
-            this.bGuardar.TabIndex = 1;
-            this.bGuardar.Text = "Guardar";
-            this.bGuardar.UseVisualStyleBackColor = true;
+            this.BarraHerramientas.AllowMerge = false;
+            this.BarraHerramientas.BackColor = System.Drawing.Color.Transparent;
+            this.BarraHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
+            this.BarraHerramientas.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.BarraHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.BarraHerramientas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bSettings,
+            this.toolStripSeparator1,
+            this.bBuscar,
+            this.bRun,
+            this.toolStripSeparator2,
+            this.bSalir});
+            this.BarraHerramientas.Location = new System.Drawing.Point(0, 24);
+            this.BarraHerramientas.Name = "BarraHerramientas";
+            this.BarraHerramientas.Padding = new System.Windows.Forms.Padding(0);
+            this.BarraHerramientas.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.BarraHerramientas.Size = new System.Drawing.Size(1141, 39);
+            this.BarraHerramientas.TabIndex = 3;
+            this.BarraHerramientas.Text = "Barra De Herramientas";
             // 
             // bSettings
             // 
@@ -254,6 +214,13 @@
             this.bSettings.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.bSettings.Size = new System.Drawing.Size(46, 36);
             this.bSettings.Text = "Configuracion";
+            this.bSettings.Click += new System.EventHandler(this.bSettings_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
             // bBuscar
             // 
@@ -280,6 +247,12 @@
             this.bRun.Text = "Convertir";
             this.bRun.Click += new System.EventHandler(this.bRun_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
             // bSalir
             // 
             this.bSalir.AutoSize = false;
@@ -294,11 +267,92 @@
             this.bSalir.ToolTipText = "Salir";
             this.bSalir.Click += new System.EventHandler(this.bSalir_Click);
             // 
+            // panelOpciones
+            // 
+            this.panelOpciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelOpciones.Controls.Add(this.bBuscarCarpetaSeries);
+            this.panelOpciones.Controls.Add(this.labelPath);
+            this.panelOpciones.Controls.Add(this.labelOpciones);
+            this.panelOpciones.Controls.Add(this.textoPathSeries);
+            this.panelOpciones.Controls.Add(this.bGuardar);
+            this.panelOpciones.Controls.Add(this.bCancelar);
+            this.panelOpciones.Location = new System.Drawing.Point(0, 24);
+            this.panelOpciones.Margin = new System.Windows.Forms.Padding(10);
+            this.panelOpciones.Name = "panelOpciones";
+            this.panelOpciones.Size = new System.Drawing.Size(1141, 501);
+            this.panelOpciones.TabIndex = 4;
+            this.panelOpciones.Visible = false;
+            // 
+            // bGuardar
+            // 
+            this.bGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bGuardar.Location = new System.Drawing.Point(974, 465);
+            this.bGuardar.Name = "bGuardar";
+            this.bGuardar.Size = new System.Drawing.Size(75, 23);
+            this.bGuardar.TabIndex = 1;
+            this.bGuardar.Text = "Guardar";
+            this.bGuardar.UseVisualStyleBackColor = true;
+            this.bGuardar.Click += new System.EventHandler(this.bGuardar_Click);
+            // 
+            // bCancelar
+            // 
+            this.bCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bCancelar.Location = new System.Drawing.Point(1055, 465);
+            this.bCancelar.Name = "bCancelar";
+            this.bCancelar.Size = new System.Drawing.Size(74, 23);
+            this.bCancelar.TabIndex = 0;
+            this.bCancelar.Text = "Cancelar";
+            this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
+            // 
+            // dialogoBuscarCarpetaSeries
+            // 
+            this.dialogoBuscarCarpetaSeries.Description = "Carpeta Series";
+            this.dialogoBuscarCarpetaSeries.HelpRequest += new System.EventHandler(this.dialogoBuscarCarpetaSeries_HelpRequest);
+            // 
+            // labelOpciones
+            // 
+            this.labelOpciones.AutoSize = true;
+            this.labelOpciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOpciones.Location = new System.Drawing.Point(12, 14);
+            this.labelOpciones.Name = "labelOpciones";
+            this.labelOpciones.Size = new System.Drawing.Size(60, 13);
+            this.labelOpciones.TabIndex = 5;
+            this.labelOpciones.Text = "Opciones";
+            // 
+            // textoPathSeries
+            // 
+            this.textoPathSeries.Location = new System.Drawing.Point(180, 39);
+            this.textoPathSeries.Name = "textoPathSeries";
+            this.textoPathSeries.Size = new System.Drawing.Size(219, 20);
+            this.textoPathSeries.TabIndex = 6;
+            // 
+            // labelPath
+            // 
+            this.labelPath.AutoSize = true;
+            this.labelPath.Location = new System.Drawing.Point(37, 42);
+            this.labelPath.Name = "labelPath";
+            this.labelPath.Size = new System.Drawing.Size(137, 13);
+            this.labelPath.TabIndex = 7;
+            this.labelPath.Text = "Ruta a la carpeta de series:";
+            // 
+            // bBuscarCarpetaSeries
+            // 
+            this.bBuscarCarpetaSeries.Location = new System.Drawing.Point(405, 37);
+            this.bBuscarCarpetaSeries.Name = "bBuscarCarpetaSeries";
+            this.bBuscarCarpetaSeries.Size = new System.Drawing.Size(75, 23);
+            this.bBuscarCarpetaSeries.TabIndex = 8;
+            this.bBuscarCarpetaSeries.Text = "Buscar...";
+            this.bBuscarCarpetaSeries.UseVisualStyleBackColor = true;
+            this.bBuscarCarpetaSeries.Click += new System.EventHandler(this.bBuscarCarpetaSeries_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1528, 524);
+            this.ClientSize = new System.Drawing.Size(1141, 524);
             this.Controls.Add(this.BarraHerramientas);
             this.Controls.Add(this.panelVistaPrevia);
             this.Controls.Add(this.menuTop1);
@@ -313,6 +367,7 @@
             this.BarraHerramientas.ResumeLayout(false);
             this.BarraHerramientas.PerformLayout();
             this.panelOpciones.ResumeLayout(false);
+            this.panelOpciones.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,6 +397,11 @@
         private System.Windows.Forms.Button bGuardar;
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.ToolStripButton bSettings;
+        private System.Windows.Forms.Button bBuscarCarpetaSeries;
+        private System.Windows.Forms.Label labelPath;
+        private System.Windows.Forms.Label labelOpciones;
+        private System.Windows.Forms.TextBox textoPathSeries;
+        private System.Windows.Forms.FolderBrowserDialog dialogoBuscarCarpetaSeries;
     }
 }
 
