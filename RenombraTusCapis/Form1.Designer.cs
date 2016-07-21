@@ -34,13 +34,6 @@
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelVistaPrevia = new System.Windows.Forms.DataGridView();
-            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.srtOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buscaSrt = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.srtDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.videoOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buscarVideo = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.videoDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BarraHerramientas = new System.Windows.Forms.ToolStrip();
             this.bSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -56,6 +49,16 @@
             this.bGuardar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.dialogoBuscarCarpetaSeries = new System.Windows.Forms.FolderBrowserDialog();
+            this.labelTemporada = new System.Windows.Forms.Label();
+            this.labelSubcarpetaTemporadaResultado = new System.Windows.Forms.Label();
+            this.textoCarpetaTemporada = new System.Windows.Forms.TextBox();
+            this.chkSeleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.srtOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buscaSrt = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.srtDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.videoOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buscarVideo = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.videoDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuTop1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelVistaPrevia)).BeginInit();
             this.BarraHerramientas.SuspendLayout();
@@ -103,7 +106,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelVistaPrevia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.panelVistaPrevia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Seleccion,
+            this.chkSeleccion,
             this.srtOriginal,
             this.buscaSrt,
             this.srtDestino,
@@ -115,72 +118,6 @@
             this.panelVistaPrevia.Size = new System.Drawing.Size(1141, 462);
             this.panelVistaPrevia.TabIndex = 2;
             this.panelVistaPrevia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Seleccion
-            // 
-            this.Seleccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Seleccion.Frozen = true;
-            this.Seleccion.HeaderText = "";
-            this.Seleccion.MinimumWidth = 20;
-            this.Seleccion.Name = "Seleccion";
-            this.Seleccion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Seleccion.Width = 20;
-            // 
-            // srtOriginal
-            // 
-            this.srtOriginal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.srtOriginal.HeaderText = "Subtitulo Original";
-            this.srtOriginal.MinimumWidth = 150;
-            this.srtOriginal.Name = "srtOriginal";
-            this.srtOriginal.ReadOnly = true;
-            // 
-            // buscaSrt
-            // 
-            this.buscaSrt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.buscaSrt.HeaderText = "";
-            this.buscaSrt.MinimumWidth = 25;
-            this.buscaSrt.Name = "buscaSrt";
-            this.buscaSrt.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.buscaSrt.Text = "...";
-            this.buscaSrt.ToolTipText = "Buscar";
-            this.buscaSrt.Width = 25;
-            // 
-            // srtDestino
-            // 
-            this.srtDestino.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.srtDestino.HeaderText = "Subtitulo Destino";
-            this.srtDestino.MinimumWidth = 150;
-            this.srtDestino.Name = "srtDestino";
-            this.srtDestino.ReadOnly = true;
-            this.srtDestino.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.srtDestino.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // videoOriginal
-            // 
-            this.videoOriginal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.videoOriginal.HeaderText = "Video Original";
-            this.videoOriginal.MinimumWidth = 150;
-            this.videoOriginal.Name = "videoOriginal";
-            this.videoOriginal.ReadOnly = true;
-            // 
-            // buscarVideo
-            // 
-            this.buscarVideo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.buscarVideo.HeaderText = "";
-            this.buscarVideo.MinimumWidth = 25;
-            this.buscarVideo.Name = "buscarVideo";
-            this.buscarVideo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.buscarVideo.Text = "buscar";
-            this.buscarVideo.ToolTipText = "Buscar";
-            this.buscarVideo.Width = 25;
-            // 
-            // videoDestino
-            // 
-            this.videoDestino.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.videoDestino.HeaderText = "Video Destino";
-            this.videoDestino.MinimumWidth = 150;
-            this.videoDestino.Name = "videoDestino";
-            this.videoDestino.ReadOnly = true;
             // 
             // BarraHerramientas
             // 
@@ -272,6 +209,9 @@
             this.panelOpciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelOpciones.Controls.Add(this.textoCarpetaTemporada);
+            this.panelOpciones.Controls.Add(this.labelSubcarpetaTemporadaResultado);
+            this.panelOpciones.Controls.Add(this.labelTemporada);
             this.panelOpciones.Controls.Add(this.bBuscarCarpetaSeries);
             this.panelOpciones.Controls.Add(this.labelPath);
             this.panelOpciones.Controls.Add(this.labelOpciones);
@@ -287,7 +227,7 @@
             // 
             // bBuscarCarpetaSeries
             // 
-            this.bBuscarCarpetaSeries.Location = new System.Drawing.Point(405, 37);
+            this.bBuscarCarpetaSeries.Location = new System.Drawing.Point(442, 54);
             this.bBuscarCarpetaSeries.Name = "bBuscarCarpetaSeries";
             this.bBuscarCarpetaSeries.Size = new System.Drawing.Size(75, 23);
             this.bBuscarCarpetaSeries.TabIndex = 8;
@@ -298,7 +238,7 @@
             // labelPath
             // 
             this.labelPath.AutoSize = true;
-            this.labelPath.Location = new System.Drawing.Point(37, 42);
+            this.labelPath.Location = new System.Drawing.Point(74, 59);
             this.labelPath.Name = "labelPath";
             this.labelPath.Size = new System.Drawing.Size(137, 13);
             this.labelPath.TabIndex = 7;
@@ -316,7 +256,7 @@
             // 
             // textoPathSeries
             // 
-            this.textoPathSeries.Location = new System.Drawing.Point(180, 39);
+            this.textoPathSeries.Location = new System.Drawing.Point(217, 56);
             this.textoPathSeries.Name = "textoPathSeries";
             this.textoPathSeries.Size = new System.Drawing.Size(219, 20);
             this.textoPathSeries.TabIndex = 6;
@@ -347,6 +287,99 @@
             // 
             this.dialogoBuscarCarpetaSeries.Description = "Carpeta Series";
             this.dialogoBuscarCarpetaSeries.HelpRequest += new System.EventHandler(this.dialogoBuscarCarpetaSeries_HelpRequest);
+            // 
+            // labelTemporada
+            // 
+            this.labelTemporada.AutoSize = true;
+            this.labelTemporada.Location = new System.Drawing.Point(49, 89);
+            this.labelTemporada.Name = "labelTemporada";
+            this.labelTemporada.Size = new System.Drawing.Size(162, 13);
+            this.labelTemporada.TabIndex = 9;
+            this.labelTemporada.Text = "Nombre Subcarpeta Temporada:";
+            this.labelTemporada.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSubcarpetaTemporadaResultado
+            // 
+            this.labelSubcarpetaTemporadaResultado.AutoSize = true;
+            this.labelSubcarpetaTemporadaResultado.Location = new System.Drawing.Point(338, 89);
+            this.labelSubcarpetaTemporadaResultado.Name = "labelSubcarpetaTemporadaResultado";
+            this.labelSubcarpetaTemporadaResultado.Size = new System.Drawing.Size(0, 13);
+            this.labelSubcarpetaTemporadaResultado.TabIndex = 10;
+            // 
+            // textoCarpetaTemporada
+            // 
+            this.textoCarpetaTemporada.CausesValidation = false;
+            this.textoCarpetaTemporada.Location = new System.Drawing.Point(217, 86);
+            this.textoCarpetaTemporada.Name = "textoCarpetaTemporada";
+            this.textoCarpetaTemporada.Size = new System.Drawing.Size(115, 20);
+            this.textoCarpetaTemporada.TabIndex = 11;
+            this.textoCarpetaTemporada.TextChanged += new System.EventHandler(this.textoCarpetaTemporada_TextChanged);
+            // 
+            // chkSeleccion
+            // 
+            this.chkSeleccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.chkSeleccion.Frozen = true;
+            this.chkSeleccion.HeaderText = "";
+            this.chkSeleccion.MinimumWidth = 20;
+            this.chkSeleccion.Name = "chkSeleccion";
+            this.chkSeleccion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.chkSeleccion.Width = 20;
+            // 
+            // srtOriginal
+            // 
+            this.srtOriginal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.srtOriginal.HeaderText = "Subtitulo Original";
+            this.srtOriginal.MinimumWidth = 150;
+            this.srtOriginal.Name = "srtOriginal";
+            this.srtOriginal.ReadOnly = true;
+            // 
+            // buscaSrt
+            // 
+            this.buscaSrt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.buscaSrt.HeaderText = "";
+            this.buscaSrt.MinimumWidth = 25;
+            this.buscaSrt.Name = "buscaSrt";
+            this.buscaSrt.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.buscaSrt.Text = "...";
+            this.buscaSrt.ToolTipText = "Buscar";
+            this.buscaSrt.Width = 25;
+            // 
+            // srtDestino
+            // 
+            this.srtDestino.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.srtDestino.HeaderText = "Subtitulo Destino";
+            this.srtDestino.MinimumWidth = 150;
+            this.srtDestino.Name = "srtDestino";
+            this.srtDestino.ReadOnly = true;
+            this.srtDestino.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.srtDestino.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // videoOriginal
+            // 
+            this.videoOriginal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.videoOriginal.HeaderText = "Video Original";
+            this.videoOriginal.MinimumWidth = 150;
+            this.videoOriginal.Name = "videoOriginal";
+            this.videoOriginal.ReadOnly = true;
+            // 
+            // buscarVideo
+            // 
+            this.buscarVideo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.buscarVideo.HeaderText = "";
+            this.buscarVideo.MinimumWidth = 25;
+            this.buscarVideo.Name = "buscarVideo";
+            this.buscarVideo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.buscarVideo.Text = "buscar";
+            this.buscarVideo.ToolTipText = "Buscar";
+            this.buscarVideo.Width = 25;
+            // 
+            // videoDestino
+            // 
+            this.videoDestino.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.videoDestino.HeaderText = "Video Destino";
+            this.videoDestino.MinimumWidth = 150;
+            this.videoDestino.Name = "videoDestino";
+            this.videoDestino.ReadOnly = true;
             // 
             // Principal
             // 
@@ -386,13 +419,6 @@
         private System.Windows.Forms.ToolStripButton bRun;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton bSalir;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn srtOriginal;
-        private System.Windows.Forms.DataGridViewButtonColumn buscaSrt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn srtDestino;
-        private System.Windows.Forms.DataGridViewTextBoxColumn videoOriginal;
-        private System.Windows.Forms.DataGridViewButtonColumn buscarVideo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn videoDestino;
         private System.Windows.Forms.Panel panelOpciones;
         private System.Windows.Forms.Button bGuardar;
         private System.Windows.Forms.Button bCancelar;
@@ -402,6 +428,16 @@
         private System.Windows.Forms.Label labelOpciones;
         private System.Windows.Forms.TextBox textoPathSeries;
         private System.Windows.Forms.FolderBrowserDialog dialogoBuscarCarpetaSeries;
+        private System.Windows.Forms.TextBox textoCarpetaTemporada;
+        private System.Windows.Forms.Label labelSubcarpetaTemporadaResultado;
+        private System.Windows.Forms.Label labelTemporada;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn chkSeleccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn srtOriginal;
+        private System.Windows.Forms.DataGridViewButtonColumn buscaSrt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn srtDestino;
+        private System.Windows.Forms.DataGridViewTextBoxColumn videoOriginal;
+        private System.Windows.Forms.DataGridViewButtonColumn buscarVideo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn videoDestino;
     }
 }
 
