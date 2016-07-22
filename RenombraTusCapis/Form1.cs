@@ -100,6 +100,7 @@ namespace RenombraTusCapis
                 {
                     //Console.WriteLine(fi.FullName);
 
+                    
 
                     srtOriginalesFullName[pos] = fi.FullName;
 
@@ -110,6 +111,8 @@ namespace RenombraTusCapis
                     panelVistaPrevia.Rows[pos].Cells[1].Value = fi.Name;
 
                     panelVistaPrevia.Rows[pos].Cells[3].Value = fi.Name.Substring(0, fi.Name.IndexOf("(") - 1) + fi.Extension;
+
+                    panelVistaPrevia.Rows[0].Cells[0].Selected = false;
 
                     if (archivoMKV != null)
                     {
@@ -123,31 +126,17 @@ namespace RenombraTusCapis
 
                         ((DataGridViewCheckBoxCell)panelVistaPrevia.Rows[pos].Cells[0]).Value = true;
                         panelVistaPrevia.RefreshEdit();
+                        panelVistaPrevia.Rows[pos].Cells[0].Selected = true;
 
                     }
                     else
+                    { 
+                        ((DataGridViewCheckBoxCell)panelVistaPrevia.Rows[pos].Cells[0]).Value = false;
                         panelVistaPrevia.Rows[pos].Cells[4].Value = "No se ha encontrado el video correspondiente";
+                    }
                     pos++;
                 }
 
-
-
-                // Create and execute a new query by using the previous 
-                // query as a starting point. fileQuery is not 
-                // executed again until the call to Last()
-
-                /* var newestFile =
-                    (from file in fileQuery
-                     orderby file.CreationTime
-                     select new { file.FullName, file.CreationTime })
-                    .Last();
-
-                Console.WriteLine("\r\nThe newest .txt file is {0}. Creation time: {1}",
-                    newestFile.FullName, newestFile.CreationTime);*/
-
-                // Keep the console window open in debug mode.
-                /* Console.WriteLine("Press any key to exit");
-                Console.ReadKey(); */
             }
         }
 
@@ -211,6 +200,213 @@ namespace RenombraTusCapis
 
         private void bRun_Click(object sender, EventArgs e)
         {
+            if (panelVistaPrevia.RowCount > 0)
+            {
+                int contadorModificadas = 0;
+
+
+
+                //mostrar advertencia
+                foreach (DataGridViewRow row in panelVistaPrevia.Rows)
+                {
+                    if ((bool)(((DataGridViewCheckBoxCell)row.Cells[0]).Value) == true)
+                    {
+                        if (mueveSRT(row))
+                        {
+                            contadorModificadas++;
+                        }
+                        if (mueveMKV(row))
+                        {
+                            contadorModificadas++;
+                        }
+                    }
+                    else
+                    {
+                        //Console.WriteLine("no entra");
+                    }
+                }
+            }
+            else
+            {
+                //dialogo no hay filas, busca primero.
+            }
+
+            //TODO: Devolver contador modificadas.
+            bBuscar_Click(sender,e);
+        }
+
+        private bool mueveMKV(DataGridViewRow row)
+        {
+            string sourceFile = "";
+            string destFile = "";
+            string targetPath = "";
+
+            //buscar archivo (con path)
+            DirectoryInfo dir = new DirectoryInfo(textoPathSeries.Text);
+            FileInfo fileList = dir.GetFiles((string)row.Cells[4].Value, SearchOption.AllDirectories).FirstOrDefault();
+            sourceFile = fileList.FullName;
+
+            //objetivo
+            targetPath = obtenerTargetPath((string)row.Cells[1].Value, fileList.DirectoryName);
+            destFile = Path.Combine(targetPath, (string)row.Cells[6].Value);
+
+            // To copy a folder's contents to a new location:
+            // Create a new target folder, if necessary.
+            if (!Directory.Exists(targetPath))
+            {
+                Directory.CreateDirectory(targetPath);
+            }
+
+            int contRenombre = 0;
+            string destFileTemp = destFile;
+            while (File.Exists(destFileTemp))
+            {
+                destFileTemp = destFile + "_" + contRenombre.ToString();
+                contRenombre++;
+            }
+
+            destFile = destFileTemp;
+            try
+            {
+                File.Move(sourceFile, destFile);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+        private bool mueveSRT(DataGridViewRow row)
+        {
+            string sourceFile = "";
+            string destFile = "";
+            string targetPath = "";
+
+            //buscar archivo (con path)
+            DirectoryInfo dir = new DirectoryInfo(textoPathSeries.Text);
+            FileInfo fileList = dir.GetFiles((string)row.Cells[1].Value, SearchOption.AllDirectories).FirstOrDefault();
+            sourceFile = fileList.FullName;
+
+            //objetivo
+            targetPath = obtenerTargetPath(fileList.Name, fileList.DirectoryName);
+            destFile = Path.Combine(targetPath, (string)row.Cells[3].Value);
+
+            // To copy a folder's contents to a new location:
+            // Create a new target folder, if necessary.
+            if (!Directory.Exists(targetPath))
+            {
+                Directory.CreateDirectory(targetPath);
+            }
+
+            int contRenombre = 0;
+            string destFileTemp = destFile;
+            while (File.Exists(destFileTemp))
+            {
+                destFileTemp = destFile + "_" + contRenombre.ToString();
+                contRenombre++;
+            }
+
+            destFile = destFileTemp;
+            try
+            { 
+                File.Move(sourceFile, destFile);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+                
+        }
+
+        private string obtenerTargetPath(string name, string orgPath)
+        {
+            string directorio = "";
+            string nombreSerie = "";
+            string temporadaSerie = "";
+            if (textoCarpetaTemporada.Text == "")
+            {
+                directorio = orgPath;
+            }
+            else
+            {
+                nombreSerie = obtenerNombreSerie(name);
+                temporadaSerie = obtenerTemporadaSerie(name);
+                directorio = textoPathSeries.Text + @"\" + nombreSerie + @"\" + textoCarpetaTemporada.Text + " " + temporadaSerie + @"\" ;
+            }
+            
+            return directorio;
+        }
+
+        private string obtenerTemporadaSerie(string name)
+        {
+            int numPalabra = 0;
+            int posicionInicioPalabra = 0;
+            string nameTemporal = name;
+            string[] palabras = new string[nameTemporal.Length];
+
+            bool continua = true;
+
+            string numeroTemporada = "";
+
+            do
+            {
+                palabras[numPalabra] = nameTemporal.Substring(posicionInicioPalabra, nameTemporal.IndexOf(' '));
+                if (palabras[numPalabra][0] == '-')
+                {
+                    //separar por x y poner E y S
+                    numeroTemporada = numeroTemporada + palabras[numPalabra - 1].Substring(0, palabras[numPalabra - 1].IndexOf("x"));
+                    continua = false;
+
+                }
+
+                nameTemporal = nameTemporal.Substring(nameTemporal.IndexOf(' ') + 1, nameTemporal.Length - nameTemporal.IndexOf(' ') - 1);
+                numPalabra++;
+
+            } while (continua);
+
+            return numeroTemporada;
+        }
+
+        private string obtenerNombreSerie(string name)
+        {
+            int numPalabra = 0;
+            int posicionInicioPalabra = 0;
+            string nameTemporal = name;
+            string[] palabras = new string[nameTemporal.Length];
+
+            bool continua = true;
+
+            string nombreSerie = "";
+
+            do
+            {
+                palabras[numPalabra] = nameTemporal.Substring(posicionInicioPalabra, nameTemporal.IndexOf(' '));
+                if (palabras[numPalabra][0] == '-')
+                {
+                    //separar por x y poner E y S
+
+                    for (int i = 0; i < numPalabra - 1; i++)
+                    {
+                        nombreSerie = nombreSerie + palabras[i] + " ";
+                    }
+
+                    //quitar el último espacio
+                    nombreSerie = nombreSerie.Substring(0, nombreSerie.Length - 1);
+
+                    continua = false;
+
+                }
+
+                nameTemporal = nameTemporal.Substring(nameTemporal.IndexOf(' ') + 1, nameTemporal.Length - nameTemporal.IndexOf(' ') - 1);
+                numPalabra++;
+
+
+            } while (continua);
+
+            return nombreSerie;
 
         }
 
@@ -228,6 +424,7 @@ namespace RenombraTusCapis
         private void bSalir_Click(object sender, EventArgs e)
         {
             //<div>Icons made by <a href="http://www.flaticon.com/authors/icomoon" title="Icomoon">Icomoon</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+            Application.Exit();
         }
 
         private void dialogoBuscarCarpetaSeries_HelpRequest(object sender, EventArgs e)

@@ -93,9 +93,9 @@ namespace RenombraTusCapis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap video_editing {
+        internal static System.Drawing.Bitmap videoediting {
             get {
-                object obj = ResourceManager.GetObject("video-editing", resourceCulture);
+                object obj = ResourceManager.GetObject("videoediting", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
