@@ -244,38 +244,41 @@ namespace RenombraTusCapis
             //buscar archivo (con path)
             DirectoryInfo dir = new DirectoryInfo(textoPathSeries.Text);
             FileInfo fileList = dir.GetFiles((string)row.Cells[4].Value, SearchOption.AllDirectories).FirstOrDefault();
-            sourceFile = fileList.FullName;
+            if (fileList != null)
+            { 
+                sourceFile = fileList.FullName;
 
-            //objetivo
-            targetPath = obtenerTargetPath((string)row.Cells[1].Value, fileList.DirectoryName);
-            destFile = Path.Combine(targetPath, (string)row.Cells[6].Value);
+                //objetivo
+                targetPath = obtenerTargetPath((string)row.Cells[1].Value, fileList.DirectoryName);
+                destFile = Path.Combine(targetPath, (string)row.Cells[6].Value);
 
-            // To copy a folder's contents to a new location:
-            // Create a new target folder, if necessary.
-            if (!Directory.Exists(targetPath))
-            {
-                Directory.CreateDirectory(targetPath);
+                // To copy a folder's contents to a new location:
+                // Create a new target folder, if necessary.
+                if (!Directory.Exists(targetPath))
+                {
+                    Directory.CreateDirectory(targetPath);
+                }
+
+                int contRenombre = 0;
+                string destFileTemp = destFile;
+                while (File.Exists(destFileTemp))
+                {
+                    destFileTemp = destFile + "_" + contRenombre.ToString();
+                    contRenombre++;
+                }
+
+                destFile = destFileTemp;
+                try
+                {
+                    File.Move(sourceFile, destFile);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
-
-            int contRenombre = 0;
-            string destFileTemp = destFile;
-            while (File.Exists(destFileTemp))
-            {
-                destFileTemp = destFile + "_" + contRenombre.ToString();
-                contRenombre++;
-            }
-
-            destFile = destFileTemp;
-            try
-            {
-                File.Move(sourceFile, destFile);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-
+            return false;
         }
 
         private bool mueveSRT(DataGridViewRow row)
@@ -304,7 +307,7 @@ namespace RenombraTusCapis
             string destFileTemp = destFile;
             while (File.Exists(destFileTemp))
             {
-                destFileTemp = destFile + "_" + contRenombre.ToString();
+                destFileTemp = destFile.Substring(0,destFile.Count() - 4) + "_" + contRenombre.ToString() + ".srt";
                 contRenombre++;
             }
 
