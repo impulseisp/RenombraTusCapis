@@ -65,8 +65,12 @@ namespace RenombraTusCapis
             this.buscarVideo = new System.Windows.Forms.DataGridViewButtonColumn();
             this.videoDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BarraHerramientas = new System.Windows.Forms.ToolStrip();
+            this.bSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bBuscar = new System.Windows.Forms.ToolStripButton();
+            this.bRun = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bSalir = new System.Windows.Forms.ToolStripButton();
             this.panelOpciones = new System.Windows.Forms.Panel();
             this.textoCarpetaTemporada = new System.Windows.Forms.TextBox();
             this.labelSubcarpetaTemporadaResultado = new System.Windows.Forms.Label();
@@ -78,10 +82,7 @@ namespace RenombraTusCapis
             this.bGuardar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.dialogoBuscarCarpetaSeries = new System.Windows.Forms.FolderBrowserDialog();
-            this.bSettings = new System.Windows.Forms.ToolStripButton();
-            this.bBuscar = new System.Windows.Forms.ToolStripButton();
-            this.bRun = new System.Windows.Forms.ToolStripButton();
-            this.bSalir = new System.Windows.Forms.ToolStripButton();
+            this.acercaDeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTop1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelVistaPrevia)).BeginInit();
             this.BarraHerramientas.SuspendLayout();
@@ -117,6 +118,8 @@ namespace RenombraTusCapis
             // 
             // acercaDeToolStripMenuItem
             // 
+            this.acercaDeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.acercaDeToolStripMenuItem1});
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.acercaDeToolStripMenuItem.Text = "Ayuda";
@@ -230,17 +233,68 @@ namespace RenombraTusCapis
             this.BarraHerramientas.TabIndex = 3;
             this.BarraHerramientas.Text = "Barra De Herramientas";
             // 
+            // bSettings
+            // 
+            this.bSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bSettings.Image = global::RenombraTusCapis.Properties.Resources.settings;
+            this.bSettings.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.bSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bSettings.Name = "bSettings";
+            this.bSettings.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.bSettings.Size = new System.Drawing.Size(46, 36);
+            this.bSettings.Text = "Configuracion";
+            this.bSettings.Click += new System.EventHandler(this.bSettings_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
+            // bBuscar
+            // 
+            this.bBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bBuscar.Image = ((System.Drawing.Image)(resources.GetObject("bBuscar.Image")));
+            this.bBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.bBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bBuscar.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(36, 39);
+            this.bBuscar.Text = "toolStripButton1";
+            this.bBuscar.ToolTipText = "Buscar";
+            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
+            // 
+            // bRun
+            // 
+            this.bRun.AutoSize = false;
+            this.bRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bRun.Image = global::RenombraTusCapis.Properties.Resources.videoediting;
+            this.bRun.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bRun.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.bRun.Name = "bRun";
+            this.bRun.Size = new System.Drawing.Size(36, 39);
+            this.bRun.Text = "Convertir";
+            this.bRun.Click += new System.EventHandler(this.bRun_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
+            // bSalir
+            // 
+            this.bSalir.AutoSize = false;
+            this.bSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bSalir.Image = global::RenombraTusCapis.Properties.Resources.exit;
+            this.bSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bSalir.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.bSalir.Name = "bSalir";
+            this.bSalir.Size = new System.Drawing.Size(32, 30);
+            this.bSalir.Text = "Salir";
+            this.bSalir.ToolTipText = "Salir";
+            this.bSalir.Click += new System.EventHandler(this.bSalir_Click);
             // 
             // panelOpciones
             // 
@@ -352,56 +406,13 @@ namespace RenombraTusCapis
             this.dialogoBuscarCarpetaSeries.Description = "Carpeta Series";
             this.dialogoBuscarCarpetaSeries.HelpRequest += new System.EventHandler(this.dialogoBuscarCarpetaSeries_HelpRequest);
             // 
-            // bSettings
+            // acercaDeToolStripMenuItem1
             // 
-            this.bSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bSettings.Image = global::RenombraTusCapis.Properties.Resources.settings;
-            this.bSettings.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.bSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bSettings.Name = "bSettings";
-            this.bSettings.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.bSettings.Size = new System.Drawing.Size(46, 36);
-            this.bSettings.Text = "Configuracion";
-            this.bSettings.Click += new System.EventHandler(this.bSettings_Click);
-            // 
-            // bBuscar
-            // 
-            this.bBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bBuscar.Image = ((System.Drawing.Image)(resources.GetObject("bBuscar.Image")));
-            this.bBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.bBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bBuscar.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(36, 39);
-            this.bBuscar.Text = "toolStripButton1";
-            this.bBuscar.ToolTipText = "Buscar";
-            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
-            // 
-            // bRun
-            // 
-            this.bRun.AutoSize = false;
-            this.bRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bRun.Image = global::RenombraTusCapis.Properties.Resources.videoediting;
-            this.bRun.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bRun.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.bRun.Name = "bRun";
-            this.bRun.Size = new System.Drawing.Size(36, 39);
-            this.bRun.Text = "Convertir";
-            this.bRun.Click += new System.EventHandler(this.bRun_Click);
-            // 
-            // bSalir
-            // 
-            this.bSalir.AutoSize = false;
-            this.bSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bSalir.Image = global::RenombraTusCapis.Properties.Resources.exit;
-            this.bSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bSalir.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.bSalir.Name = "bSalir";
-            this.bSalir.Size = new System.Drawing.Size(32, 30);
-            this.bSalir.Text = "Salir";
-            this.bSalir.ToolTipText = "Salir";
-            this.bSalir.Click += new System.EventHandler(this.bSalir_Click);
+            this.acercaDeToolStripMenuItem1.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.acercaDeToolStripMenuItem1.Name = "acercaDeToolStripMenuItem1";
+            this.acercaDeToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.acercaDeToolStripMenuItem1.Text = "Acerca de...";
+            this.acercaDeToolStripMenuItem1.Click += new System.EventHandler(this.acercaDeToolStripMenuItem1_Click);
             // 
             // Principal
             // 
@@ -460,6 +471,7 @@ namespace RenombraTusCapis
         private System.Windows.Forms.DataGridViewTextBoxColumn videoOriginal;
         private System.Windows.Forms.DataGridViewButtonColumn buscarVideo;
         private System.Windows.Forms.DataGridViewTextBoxColumn videoDestino;
+        private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem1;
     }
 }
 

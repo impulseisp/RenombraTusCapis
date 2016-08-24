@@ -476,5 +476,12 @@ namespace RenombraTusCapis
                 labelSubcarpetaTemporadaResultado.Text = "Los videos se guardarán en [NombreDeSerie]\\" + textoCarpetaTemporada.Text + " [NumeroDeTemporada]";
             }
         }
+
+        private void acercaDeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AboutBox1 aboutBox = new AboutBox1();
+
+            aboutBox.ShowDialog();
+        }
     }
 }
