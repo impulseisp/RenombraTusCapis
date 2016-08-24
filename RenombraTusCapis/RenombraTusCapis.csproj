@@ -26,7 +26,7 @@
     <TargetCulture>es-ES</TargetCulture>
     <ProductName>RenombraTusCapis</ProductName>
     <PublisherName>impulseisp</PublisherName>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>0.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
