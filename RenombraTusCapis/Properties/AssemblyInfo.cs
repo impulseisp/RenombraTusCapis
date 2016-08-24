@@ -28,11 +28,11 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("RenombraTusCapis")]
-[assembly: AssemblyDescription("Renombrador automático de archivos de subtitulos y de video de series de TV.")]
+[assembly: AssemblyDescription("Renombrador automático de archivos de subtitulos y de video de series de TV. LICENSE NOTICE: This file is part of 'RenombraTusCapis: Renombrador automático de archivos de subtitulos y de video de series de TV.' Copyright(C) 2016 impulseisp(@impulseisp)(Salva Ispierto) This program is free software: you can redistribute it and / or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Lesser General Public License for more details. You should have received a copy of the GNU Lesser General Public License along with this program.If not, see<http://www.gnu.org/licenses/>. ")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("RenombraTusCapis")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright (C) 2016 impulseisp (@impulseisp)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -54,5 +54,5 @@ using System.Runtime.InteropServices;
 // Puede especificar todos los valores o usar los valores predeterminados de número de compilación y de revisión 
 // mediante el carácter '*', como se muestra a continuación:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.0.1.5")]
+[assembly: AssemblyFileVersion("0.0.1.5")]
