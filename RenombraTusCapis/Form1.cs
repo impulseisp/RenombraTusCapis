@@ -80,63 +80,69 @@ namespace RenombraTusCapis
 
                 // This method assumes that the application has discovery permissions
                 // for all folders under the specified path.
-                IEnumerable<FileInfo> fileList = dir.GetFiles("*(*(*)*).*", SearchOption.AllDirectories);
+                if (dir.Exists)
+                { 
+                    IEnumerable<FileInfo> fileList = dir.GetFiles("*(*(*)*).*", SearchOption.AllDirectories);
 
-                //Create the query
-                IEnumerable<FileInfo> fileQuery =
-                    from file in fileList
-                    where file.Extension == ".srt"
-                    orderby file.Name
-                    select file;
+                    //Create the query
+                    IEnumerable<FileInfo> fileQuery =
+                        from file in fileList
+                        where file.Extension == ".srt"
+                        orderby file.Name
+                        select file;
 
-                //filas tabla
-                int pos = 0;
-                string[] srtOriginalesFullName = new string[fileList.Count()];
-                FileInfo archivoMKV;
+                    //filas tabla
+                    int pos = 0;
+                    string[] srtOriginalesFullName = new string[fileList.Count()];
+                    FileInfo archivoMKV;
 
 
-                //Execute the query. This might write out a lot of files!
-                foreach (FileInfo fi in fileQuery)
-                {
-                    //Console.WriteLine(fi.FullName);
+                    //Execute the query. This might write out a lot of files!
+                    foreach (FileInfo fi in fileQuery)
+                    {
+                        //Console.WriteLine(fi.FullName);
 
                     
 
-                    srtOriginalesFullName[pos] = fi.FullName;
+                        srtOriginalesFullName[pos] = fi.FullName;
 
-                    archivoMKV = buscaMKV(fi.Name, dir);
+                        archivoMKV = buscaMKV(fi.Name, dir);
 
 
-                    panelVistaPrevia.Rows.Add();
-                    panelVistaPrevia.Rows[pos].Cells[1].Value = fi.Name;
+                        panelVistaPrevia.Rows.Add();
+                        panelVistaPrevia.Rows[pos].Cells[1].Value = fi.Name;
 
-                    panelVistaPrevia.Rows[pos].Cells[3].Value = fi.Name.Substring(0, fi.Name.IndexOf("(") - 1) + fi.Extension;
+                        panelVistaPrevia.Rows[pos].Cells[3].Value = fi.Name.Substring(0, fi.Name.IndexOf("(") - 1) + fi.Extension;
 
-                    panelVistaPrevia.Rows[0].Cells[0].Selected = false;
+                        panelVistaPrevia.Rows[pos].Cells[0].Selected = false;
 
-                    if (archivoMKV != null)
-                    {
-                        panelVistaPrevia.Rows[pos].Cells[4].Value = archivoMKV.Name;
-                        panelVistaPrevia.Rows[pos].Cells[6].Value = renombraMKV(archivoMKV.Name, fi.Name.Substring(0, fi.Name.IndexOf("(") - 1));
+                        if (archivoMKV != null)
+                        {
+                            panelVistaPrevia.Rows[pos].Cells[4].Value = archivoMKV.Name;
+                            panelVistaPrevia.Rows[pos].Cells[6].Value = renombraMKV(archivoMKV.Name, fi.Name.Substring(0, fi.Name.IndexOf("(") - 1));
 
-                        panelVistaPrevia.Rows[pos].Cells[4].Selected = true;
-                        panelVistaPrevia.Rows[pos].Cells[6].Selected = true;
-                        panelVistaPrevia.Rows[pos].Cells[1].Selected = true;
-                        panelVistaPrevia.Rows[pos].Cells[3].Selected = true;
+                            panelVistaPrevia.Rows[pos].Cells[4].Selected = true;
+                            panelVistaPrevia.Rows[pos].Cells[6].Selected = true;
+                            panelVistaPrevia.Rows[pos].Cells[1].Selected = true;
+                            panelVistaPrevia.Rows[pos].Cells[3].Selected = true;
 
-                        ((DataGridViewCheckBoxCell)panelVistaPrevia.Rows[pos].Cells[0]).Value = true;
-                        panelVistaPrevia.RefreshEdit();
-                        panelVistaPrevia.Rows[pos].Cells[0].Selected = true;
+                            ((DataGridViewCheckBoxCell)panelVistaPrevia.Rows[pos].Cells[0]).Value = true;
+                            panelVistaPrevia.RefreshEdit();
+                            panelVistaPrevia.Rows[pos].Cells[0].Selected = true;
 
+                        }
+                        else
+                        { 
+                            ((DataGridViewCheckBoxCell)panelVistaPrevia.Rows[pos].Cells[0]).Value = false;
+                            panelVistaPrevia.Rows[pos].Cells[4].Value = "No se ha encontrado el video correspondiente";
+                        }
+                        pos++;
                     }
-                    else
-                    { 
-                        ((DataGridViewCheckBoxCell)panelVistaPrevia.Rows[pos].Cells[0]).Value = false;
-                        panelVistaPrevia.Rows[pos].Cells[4].Value = "No se ha encontrado el video correspondiente";
-                    }
-                    pos++;
                 }
-
+                else
+                {
+                    //TODO: mostrar algo de que el directorio no existe
+                }
             }
         }
 
