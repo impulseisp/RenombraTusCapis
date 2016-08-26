@@ -13,6 +13,21 @@ Pulsa el botón de convertir.
 
 Hecho! tus subtitulos y capítulos tienen ahora un nombre legible y están juntos en la carpeta correspondiente.
 
+
+Para futuras versiones
+
+- Poder seleccionar un archivo de video concreto para un srt
+- soporte para avi y mp4 además de mkv
+
+
+Bugs conocidos:
+
+- De momento ninguno
+
+
+
+
+
 FAQ
 
 ¿Por Que?
@@ -26,6 +41,20 @@ El programa está licenciado bajo GPLv3, por lo tanto es libre para su distribuc
 
 Soy programador. ¿Puedo modificar tu código?
 Como ya he dicho, el programa está licenciado bajo GPLv3, por lo tanto puedes modificarlo y adaptarlo a tu gusto, siempre que me menciones como autor original, está todo explicado en la licencia GPLv3. El codigo está disponible en github.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
  * -----------------------------LICENSE NOTICE------------------------------------
