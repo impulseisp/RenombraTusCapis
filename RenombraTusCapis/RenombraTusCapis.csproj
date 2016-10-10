@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\sispierto\Desktop\publicacion\</PublishUrl>
+    <PublishUrl>C:\Users\ispie\Desktop\publicacion\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -26,7 +26,7 @@
     <TargetCulture>es-ES</TargetCulture>
     <ProductName>RenombraTusCapis</ProductName>
     <PublisherName>impulseisp</PublisherName>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>9</ApplicationRevision>
     <ApplicationVersion>0.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -136,7 +136,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="RenombraTusCapis_ClaveTemporal.pfx" />
     <None Include="Resources\exit.png" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +160,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CHANGELOG.txt" />
     <Content Include="GPL LICENSE.txt" />
     <Content Include="COPYING.LESSER.txt" />
     <None Include="Resources\flechaDer1.png" />

@@ -190,7 +190,7 @@ namespace RenombraTusCapis
             string cadBusqueda = "*";
             int i = 0;
 
-            while (i < numPalabra-3)
+            while (i < numPalabra-2)
             { 
                 cadBusqueda = cadBusqueda + palabras[i] + "*";
                 i++;
