@@ -1,4 +1,8 @@
-﻿0.0.1.5 - 0.0.1.8
+﻿0.0.1.9
+
+- Añadida opción para eliminar Carpeta despues de mover MKV
+
+0.0.1.5 - 0.0.1.8
 
 - Corregido error en la búsqueda de Mkv. Ahora acierta más a la hora de buscar.
 - Creado CHANGELOG.TXT

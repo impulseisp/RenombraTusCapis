@@ -31,6 +31,7 @@ namespace RenombraTusCapis
                 XmlWriter w = XmlWriter.Create("Config.xml");
                 w.WriteStartElement("General_Config");
                 w.WriteElementString("CarpetaSeries", "");
+                w.WriteStartElement("EliminarCarpetas");w.WriteValue(false);w.WriteEndElement();
                 w.WriteElementString("CarpetaTemporada", "");
                 w.WriteEndElement();
                 w.Close();
@@ -40,6 +41,7 @@ namespace RenombraTusCapis
                 XmlReader r = XmlReader.Create("Config.xml");
                 r.ReadStartElement("General_Config");
                 textoPathSeries.Text = r.ReadElementContentAsString();
+                cbEliminarCarpetas.Checked = r.ReadElementContentAsBoolean();
                 textoCarpetaTemporada.Text = r.ReadElementContentAsString();
                 r.Close();
                 cambiaLabelTemporada();
@@ -210,20 +212,20 @@ namespace RenombraTusCapis
             {
                 int contadorModificadas = 0;
 
-
-
                 //mostrar advertencia
                 foreach (DataGridViewRow row in panelVistaPrevia.Rows)
                 {
                     if ((bool)(((DataGridViewCheckBoxCell)row.Cells[0]).Value) == true)
                     {
-                        if (mueveSRT(row))
+                        string pathOrigen = extraePathMKV(row);
+                        if (mueveSRT(row) && mueveMKV(row))
                         {
                             contadorModificadas++;
-                        }
-                        if (mueveMKV(row))
-                        {
-                            contadorModificadas++;
+                            if (cbEliminarCarpetas.Checked == true)
+                            {
+                                eliminaCarpeta(pathOrigen);
+                                pathOrigen = "";
+                            }
                         }
                     }
                     else
@@ -234,11 +236,37 @@ namespace RenombraTusCapis
             }
             else
             {
+                MessageBox.Show("No hay filas a modificar. Busca Primero.");
                 //dialogo no hay filas, busca primero.
             }
 
             //TODO: Devolver contador modificadas.
             bBuscar_Click(sender,e);
+        }
+
+        private string extraePathMKV(DataGridViewRow row)
+        {
+            DirectoryInfo dir = new DirectoryInfo(textoPathSeries.Text);
+            FileInfo fileList = dir.GetFiles((string)row.Cells[4].Value, SearchOption.AllDirectories).FirstOrDefault();
+            return fileList.DirectoryName;
+        }
+
+        private void eliminaCarpeta(string targetPath)
+        {
+            //objetivo
+            DirectoryInfo dir = new DirectoryInfo(targetPath);
+            if (dir.EnumerateFiles("*.*", SearchOption.AllDirectories).Sum(fi => fi.Length) > 10000000)
+            {
+                DialogResult dialogResult = MessageBox.Show("Se ha encontrado un directorio con un tamaño mayor de lo esperado. ¿Desea Eliminarlo?", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    dir.Delete(true);
+                }
+            }
+            else
+            {
+                dir.Delete(true);
+            }
         }
 
         private bool mueveMKV(DataGridViewRow row)
@@ -444,9 +472,11 @@ namespace RenombraTusCapis
 
         private void bGuardar_Click(object sender, EventArgs e)
         {
+            
             XmlWriter w = XmlWriter.Create("Config.xml");
             w.WriteStartElement("General_Config");
             w.WriteElementString("CarpetaSeries", textoPathSeries.Text);
+            w.WriteStartElement("EliminarCarpetas"); w.WriteValue(cbEliminarCarpetas.Checked); w.WriteEndElement();
             w.WriteElementString("CarpetaTemporada", textoCarpetaTemporada.Text);
             w.WriteEndElement();
             w.Close();

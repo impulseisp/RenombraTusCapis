@@ -58,6 +58,15 @@ namespace RenombraTusCapis
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelVistaPrevia = new System.Windows.Forms.DataGridView();
+            this.chkSeleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.srtOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imgDerecha = new System.Windows.Forms.DataGridViewImageColumn();
+            this.srtDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.videoOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imgDer2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.videoDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buscarVideo = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.buscaSrt = new System.Windows.Forms.DataGridViewButtonColumn();
             this.BarraHerramientas = new System.Windows.Forms.ToolStrip();
             this.bSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -76,15 +85,8 @@ namespace RenombraTusCapis
             this.bGuardar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.dialogoBuscarCarpetaSeries = new System.Windows.Forms.FolderBrowserDialog();
-            this.chkSeleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.srtOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imgDerecha = new System.Windows.Forms.DataGridViewImageColumn();
-            this.srtDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.videoOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imgDer2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.videoDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buscarVideo = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.buscaSrt = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.labelEliminarCarpetas = new System.Windows.Forms.Label();
+            this.cbEliminarCarpetas = new System.Windows.Forms.CheckBox();
             this.menuTop1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelVistaPrevia)).BeginInit();
             this.BarraHerramientas.SuspendLayout();
@@ -156,201 +158,6 @@ namespace RenombraTusCapis
             this.panelVistaPrevia.Size = new System.Drawing.Size(1141, 462);
             this.panelVistaPrevia.TabIndex = 2;
             this.panelVistaPrevia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // BarraHerramientas
-            // 
-            this.BarraHerramientas.AllowMerge = false;
-            this.BarraHerramientas.BackColor = System.Drawing.Color.Transparent;
-            this.BarraHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
-            this.BarraHerramientas.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.BarraHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.BarraHerramientas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bSettings,
-            this.toolStripSeparator1,
-            this.bBuscar,
-            this.bRun,
-            this.toolStripSeparator2,
-            this.bSalir});
-            this.BarraHerramientas.Location = new System.Drawing.Point(0, 24);
-            this.BarraHerramientas.Name = "BarraHerramientas";
-            this.BarraHerramientas.Padding = new System.Windows.Forms.Padding(0);
-            this.BarraHerramientas.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.BarraHerramientas.Size = new System.Drawing.Size(1141, 39);
-            this.BarraHerramientas.TabIndex = 3;
-            this.BarraHerramientas.Text = "Barra De Herramientas";
-            // 
-            // bSettings
-            // 
-            this.bSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bSettings.Image = global::RenombraTusCapis.Properties.Resources.settings;
-            this.bSettings.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.bSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bSettings.Name = "bSettings";
-            this.bSettings.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.bSettings.Size = new System.Drawing.Size(46, 36);
-            this.bSettings.Text = "Configuracion";
-            this.bSettings.Click += new System.EventHandler(this.bSettings_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
-            // 
-            // bBuscar
-            // 
-            this.bBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bBuscar.Image = ((System.Drawing.Image)(resources.GetObject("bBuscar.Image")));
-            this.bBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.bBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bBuscar.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(36, 39);
-            this.bBuscar.Text = "toolStripButton1";
-            this.bBuscar.ToolTipText = "Buscar";
-            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
-            // 
-            // bRun
-            // 
-            this.bRun.AutoSize = false;
-            this.bRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bRun.Image = global::RenombraTusCapis.Properties.Resources.videoediting;
-            this.bRun.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bRun.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.bRun.Name = "bRun";
-            this.bRun.Size = new System.Drawing.Size(36, 39);
-            this.bRun.Text = "Convertir";
-            this.bRun.Click += new System.EventHandler(this.bRun_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
-            // 
-            // bSalir
-            // 
-            this.bSalir.AutoSize = false;
-            this.bSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bSalir.Image = global::RenombraTusCapis.Properties.Resources.exit;
-            this.bSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bSalir.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.bSalir.Name = "bSalir";
-            this.bSalir.Size = new System.Drawing.Size(32, 30);
-            this.bSalir.Text = "Salir";
-            this.bSalir.ToolTipText = "Salir";
-            this.bSalir.Click += new System.EventHandler(this.bSalir_Click);
-            // 
-            // panelOpciones
-            // 
-            this.panelOpciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panelOpciones.Controls.Add(this.textoCarpetaTemporada);
-            this.panelOpciones.Controls.Add(this.labelSubcarpetaTemporadaResultado);
-            this.panelOpciones.Controls.Add(this.labelTemporada);
-            this.panelOpciones.Controls.Add(this.bBuscarCarpetaSeries);
-            this.panelOpciones.Controls.Add(this.labelPath);
-            this.panelOpciones.Controls.Add(this.labelOpciones);
-            this.panelOpciones.Controls.Add(this.textoPathSeries);
-            this.panelOpciones.Controls.Add(this.bGuardar);
-            this.panelOpciones.Controls.Add(this.bCancelar);
-            this.panelOpciones.Location = new System.Drawing.Point(303, 94);
-            this.panelOpciones.Margin = new System.Windows.Forms.Padding(10);
-            this.panelOpciones.Name = "panelOpciones";
-            this.panelOpciones.Size = new System.Drawing.Size(546, 411);
-            this.panelOpciones.TabIndex = 4;
-            this.panelOpciones.Visible = false;
-            // 
-            // textoCarpetaTemporada
-            // 
-            this.textoCarpetaTemporada.CausesValidation = false;
-            this.textoCarpetaTemporada.Location = new System.Drawing.Point(217, 86);
-            this.textoCarpetaTemporada.Name = "textoCarpetaTemporada";
-            this.textoCarpetaTemporada.Size = new System.Drawing.Size(115, 20);
-            this.textoCarpetaTemporada.TabIndex = 11;
-            this.textoCarpetaTemporada.TextChanged += new System.EventHandler(this.textoCarpetaTemporada_TextChanged);
-            // 
-            // labelSubcarpetaTemporadaResultado
-            // 
-            this.labelSubcarpetaTemporadaResultado.AutoSize = true;
-            this.labelSubcarpetaTemporadaResultado.ForeColor = System.Drawing.Color.Red;
-            this.labelSubcarpetaTemporadaResultado.Location = new System.Drawing.Point(12, 116);
-            this.labelSubcarpetaTemporadaResultado.Name = "labelSubcarpetaTemporadaResultado";
-            this.labelSubcarpetaTemporadaResultado.Size = new System.Drawing.Size(0, 13);
-            this.labelSubcarpetaTemporadaResultado.TabIndex = 10;
-            // 
-            // labelTemporada
-            // 
-            this.labelTemporada.AutoSize = true;
-            this.labelTemporada.Location = new System.Drawing.Point(49, 89);
-            this.labelTemporada.Name = "labelTemporada";
-            this.labelTemporada.Size = new System.Drawing.Size(162, 13);
-            this.labelTemporada.TabIndex = 9;
-            this.labelTemporada.Text = "Nombre Subcarpeta Temporada:";
-            this.labelTemporada.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // bBuscarCarpetaSeries
-            // 
-            this.bBuscarCarpetaSeries.Location = new System.Drawing.Point(442, 54);
-            this.bBuscarCarpetaSeries.Name = "bBuscarCarpetaSeries";
-            this.bBuscarCarpetaSeries.Size = new System.Drawing.Size(75, 23);
-            this.bBuscarCarpetaSeries.TabIndex = 8;
-            this.bBuscarCarpetaSeries.Text = "Buscar...";
-            this.bBuscarCarpetaSeries.UseVisualStyleBackColor = true;
-            this.bBuscarCarpetaSeries.Click += new System.EventHandler(this.bBuscarCarpetaSeries_Click);
-            // 
-            // labelPath
-            // 
-            this.labelPath.AutoSize = true;
-            this.labelPath.Location = new System.Drawing.Point(74, 59);
-            this.labelPath.Name = "labelPath";
-            this.labelPath.Size = new System.Drawing.Size(137, 13);
-            this.labelPath.TabIndex = 7;
-            this.labelPath.Text = "Ruta a la carpeta de series:";
-            // 
-            // labelOpciones
-            // 
-            this.labelOpciones.AutoSize = true;
-            this.labelOpciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOpciones.Location = new System.Drawing.Point(12, 14);
-            this.labelOpciones.Name = "labelOpciones";
-            this.labelOpciones.Size = new System.Drawing.Size(60, 13);
-            this.labelOpciones.TabIndex = 5;
-            this.labelOpciones.Text = "Opciones";
-            // 
-            // textoPathSeries
-            // 
-            this.textoPathSeries.Location = new System.Drawing.Point(217, 56);
-            this.textoPathSeries.Name = "textoPathSeries";
-            this.textoPathSeries.Size = new System.Drawing.Size(219, 20);
-            this.textoPathSeries.TabIndex = 6;
-            // 
-            // bGuardar
-            // 
-            this.bGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bGuardar.Location = new System.Drawing.Point(379, 375);
-            this.bGuardar.Name = "bGuardar";
-            this.bGuardar.Size = new System.Drawing.Size(75, 23);
-            this.bGuardar.TabIndex = 1;
-            this.bGuardar.Text = "Guardar";
-            this.bGuardar.UseVisualStyleBackColor = true;
-            this.bGuardar.Click += new System.EventHandler(this.bGuardar_Click);
-            // 
-            // bCancelar
-            // 
-            this.bCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bCancelar.Location = new System.Drawing.Point(460, 375);
-            this.bCancelar.Name = "bCancelar";
-            this.bCancelar.Size = new System.Drawing.Size(74, 23);
-            this.bCancelar.TabIndex = 0;
-            this.bCancelar.Text = "Cancelar";
-            this.bCancelar.UseVisualStyleBackColor = true;
-            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
-            // 
-            // dialogoBuscarCarpetaSeries
-            // 
-            this.dialogoBuscarCarpetaSeries.Description = "Carpeta Series";
-            this.dialogoBuscarCarpetaSeries.HelpRequest += new System.EventHandler(this.dialogoBuscarCarpetaSeries_HelpRequest);
             // 
             // chkSeleccion
             // 
@@ -442,6 +249,222 @@ namespace RenombraTusCapis
             this.buscaSrt.Visible = false;
             this.buscaSrt.Width = 25;
             // 
+            // BarraHerramientas
+            // 
+            this.BarraHerramientas.AllowMerge = false;
+            this.BarraHerramientas.BackColor = System.Drawing.Color.Transparent;
+            this.BarraHerramientas.GripMargin = new System.Windows.Forms.Padding(0);
+            this.BarraHerramientas.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.BarraHerramientas.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.BarraHerramientas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bSettings,
+            this.toolStripSeparator1,
+            this.bBuscar,
+            this.bRun,
+            this.toolStripSeparator2,
+            this.bSalir});
+            this.BarraHerramientas.Location = new System.Drawing.Point(0, 24);
+            this.BarraHerramientas.Name = "BarraHerramientas";
+            this.BarraHerramientas.Padding = new System.Windows.Forms.Padding(0);
+            this.BarraHerramientas.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.BarraHerramientas.Size = new System.Drawing.Size(1141, 39);
+            this.BarraHerramientas.TabIndex = 3;
+            this.BarraHerramientas.Text = "Barra De Herramientas";
+            // 
+            // bSettings
+            // 
+            this.bSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bSettings.Image = global::RenombraTusCapis.Properties.Resources.settings;
+            this.bSettings.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.bSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bSettings.Name = "bSettings";
+            this.bSettings.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.bSettings.Size = new System.Drawing.Size(46, 36);
+            this.bSettings.Text = "Configuracion";
+            this.bSettings.Click += new System.EventHandler(this.bSettings_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
+            // 
+            // bBuscar
+            // 
+            this.bBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bBuscar.Image = ((System.Drawing.Image)(resources.GetObject("bBuscar.Image")));
+            this.bBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.bBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bBuscar.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(36, 39);
+            this.bBuscar.Text = "toolStripButton1";
+            this.bBuscar.ToolTipText = "Buscar";
+            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
+            // 
+            // bRun
+            // 
+            this.bRun.AutoSize = false;
+            this.bRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bRun.Image = global::RenombraTusCapis.Properties.Resources.videoediting;
+            this.bRun.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bRun.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.bRun.Name = "bRun";
+            this.bRun.Size = new System.Drawing.Size(36, 39);
+            this.bRun.Text = "Convertir";
+            this.bRun.Click += new System.EventHandler(this.bRun_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
+            // bSalir
+            // 
+            this.bSalir.AutoSize = false;
+            this.bSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bSalir.Image = global::RenombraTusCapis.Properties.Resources.exit;
+            this.bSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bSalir.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.bSalir.Name = "bSalir";
+            this.bSalir.Size = new System.Drawing.Size(32, 30);
+            this.bSalir.Text = "Salir";
+            this.bSalir.ToolTipText = "Salir";
+            this.bSalir.Click += new System.EventHandler(this.bSalir_Click);
+            // 
+            // panelOpciones
+            // 
+            this.panelOpciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panelOpciones.Controls.Add(this.cbEliminarCarpetas);
+            this.panelOpciones.Controls.Add(this.labelEliminarCarpetas);
+            this.panelOpciones.Controls.Add(this.textoCarpetaTemporada);
+            this.panelOpciones.Controls.Add(this.labelSubcarpetaTemporadaResultado);
+            this.panelOpciones.Controls.Add(this.labelTemporada);
+            this.panelOpciones.Controls.Add(this.bBuscarCarpetaSeries);
+            this.panelOpciones.Controls.Add(this.labelPath);
+            this.panelOpciones.Controls.Add(this.labelOpciones);
+            this.panelOpciones.Controls.Add(this.textoPathSeries);
+            this.panelOpciones.Controls.Add(this.bGuardar);
+            this.panelOpciones.Controls.Add(this.bCancelar);
+            this.panelOpciones.Location = new System.Drawing.Point(303, 94);
+            this.panelOpciones.Margin = new System.Windows.Forms.Padding(10);
+            this.panelOpciones.Name = "panelOpciones";
+            this.panelOpciones.Size = new System.Drawing.Size(546, 411);
+            this.panelOpciones.TabIndex = 4;
+            this.panelOpciones.Visible = false;
+            // 
+            // textoCarpetaTemporada
+            // 
+            this.textoCarpetaTemporada.CausesValidation = false;
+            this.textoCarpetaTemporada.Location = new System.Drawing.Point(228, 108);
+            this.textoCarpetaTemporada.Name = "textoCarpetaTemporada";
+            this.textoCarpetaTemporada.Size = new System.Drawing.Size(115, 20);
+            this.textoCarpetaTemporada.TabIndex = 11;
+            this.textoCarpetaTemporada.TextChanged += new System.EventHandler(this.textoCarpetaTemporada_TextChanged);
+            // 
+            // labelSubcarpetaTemporadaResultado
+            // 
+            this.labelSubcarpetaTemporadaResultado.AutoSize = true;
+            this.labelSubcarpetaTemporadaResultado.ForeColor = System.Drawing.Color.Red;
+            this.labelSubcarpetaTemporadaResultado.Location = new System.Drawing.Point(12, 138);
+            this.labelSubcarpetaTemporadaResultado.Name = "labelSubcarpetaTemporadaResultado";
+            this.labelSubcarpetaTemporadaResultado.Size = new System.Drawing.Size(0, 13);
+            this.labelSubcarpetaTemporadaResultado.TabIndex = 10;
+            // 
+            // labelTemporada
+            // 
+            this.labelTemporada.AccessibleName = "";
+            this.labelTemporada.AutoSize = true;
+            this.labelTemporada.Location = new System.Drawing.Point(60, 111);
+            this.labelTemporada.Name = "labelTemporada";
+            this.labelTemporada.Size = new System.Drawing.Size(162, 13);
+            this.labelTemporada.TabIndex = 9;
+            this.labelTemporada.Text = "Nombre Subcarpeta Temporada:";
+            this.labelTemporada.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // bBuscarCarpetaSeries
+            // 
+            this.bBuscarCarpetaSeries.Location = new System.Drawing.Point(453, 54);
+            this.bBuscarCarpetaSeries.Name = "bBuscarCarpetaSeries";
+            this.bBuscarCarpetaSeries.Size = new System.Drawing.Size(75, 23);
+            this.bBuscarCarpetaSeries.TabIndex = 8;
+            this.bBuscarCarpetaSeries.Text = "Buscar...";
+            this.bBuscarCarpetaSeries.UseVisualStyleBackColor = true;
+            this.bBuscarCarpetaSeries.Click += new System.EventHandler(this.bBuscarCarpetaSeries_Click);
+            // 
+            // labelPath
+            // 
+            this.labelPath.AutoSize = true;
+            this.labelPath.Location = new System.Drawing.Point(85, 59);
+            this.labelPath.Name = "labelPath";
+            this.labelPath.Size = new System.Drawing.Size(137, 13);
+            this.labelPath.TabIndex = 7;
+            this.labelPath.Text = "Ruta a la carpeta de series:";
+            // 
+            // labelOpciones
+            // 
+            this.labelOpciones.AutoSize = true;
+            this.labelOpciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOpciones.Location = new System.Drawing.Point(12, 14);
+            this.labelOpciones.Name = "labelOpciones";
+            this.labelOpciones.Size = new System.Drawing.Size(60, 13);
+            this.labelOpciones.TabIndex = 5;
+            this.labelOpciones.Text = "Opciones";
+            // 
+            // textoPathSeries
+            // 
+            this.textoPathSeries.Location = new System.Drawing.Point(228, 56);
+            this.textoPathSeries.Name = "textoPathSeries";
+            this.textoPathSeries.Size = new System.Drawing.Size(219, 20);
+            this.textoPathSeries.TabIndex = 6;
+            // 
+            // bGuardar
+            // 
+            this.bGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bGuardar.Location = new System.Drawing.Point(379, 375);
+            this.bGuardar.Name = "bGuardar";
+            this.bGuardar.Size = new System.Drawing.Size(75, 23);
+            this.bGuardar.TabIndex = 1;
+            this.bGuardar.Text = "Guardar";
+            this.bGuardar.UseVisualStyleBackColor = true;
+            this.bGuardar.Click += new System.EventHandler(this.bGuardar_Click);
+            // 
+            // bCancelar
+            // 
+            this.bCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bCancelar.Location = new System.Drawing.Point(460, 375);
+            this.bCancelar.Name = "bCancelar";
+            this.bCancelar.Size = new System.Drawing.Size(74, 23);
+            this.bCancelar.TabIndex = 0;
+            this.bCancelar.Text = "Cancelar";
+            this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
+            // 
+            // dialogoBuscarCarpetaSeries
+            // 
+            this.dialogoBuscarCarpetaSeries.Description = "Carpeta Series";
+            this.dialogoBuscarCarpetaSeries.HelpRequest += new System.EventHandler(this.dialogoBuscarCarpetaSeries_HelpRequest);
+            // 
+            // labelEliminarCarpetas
+            // 
+            this.labelEliminarCarpetas.AutoSize = true;
+            this.labelEliminarCarpetas.Location = new System.Drawing.Point(11, 86);
+            this.labelEliminarCarpetas.Name = "labelEliminarCarpetas";
+            this.labelEliminarCarpetas.Size = new System.Drawing.Size(211, 13);
+            this.labelEliminarCarpetas.TabIndex = 12;
+            this.labelEliminarCarpetas.Text = "Eliminar Carpetas Despues de Mover Serie:";
+            // 
+            // cbEliminarCarpetas
+            // 
+            this.cbEliminarCarpetas.AutoSize = true;
+            this.cbEliminarCarpetas.Location = new System.Drawing.Point(229, 84);
+            this.cbEliminarCarpetas.Name = "cbEliminarCarpetas";
+            this.cbEliminarCarpetas.Size = new System.Drawing.Size(15, 14);
+            this.cbEliminarCarpetas.TabIndex = 13;
+            this.cbEliminarCarpetas.UseVisualStyleBackColor = true;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -503,6 +526,8 @@ namespace RenombraTusCapis
         private System.Windows.Forms.DataGridViewTextBoxColumn videoDestino;
         private System.Windows.Forms.DataGridViewButtonColumn buscarVideo;
         private System.Windows.Forms.DataGridViewButtonColumn buscaSrt;
+        private System.Windows.Forms.CheckBox cbEliminarCarpetas;
+        private System.Windows.Forms.Label labelEliminarCarpetas;
     }
 }
 
